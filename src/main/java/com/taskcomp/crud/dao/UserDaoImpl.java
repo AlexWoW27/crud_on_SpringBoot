@@ -21,17 +21,15 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void save(User user) {
-        User newUser = new User();
-        newUser.setName(user.getName());
-        newUser.setSurname(user.getSurname());
-        newUser.setAge(user.getAge());
-        entityManager.persist(newUser);
+        user.setName(user.getName());
+        user.setSurname(user.getSurname());
+        user.setAge(user.getAge());
+        entityManager.persist(user);
     }
 
     @Override
     public void delete(Long id) {
-        User user = entityManager.find(User.class, id);
-        entityManager.remove(user);
+        entityManager.remove(entityManager.find(User.class, id));
     }
 
     @Override
@@ -45,8 +43,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User show(Long id) {
-        User user = entityManager.find(User.class,id);
-        return user;
+        return entityManager.find(User.class,id);
     }
 
 }

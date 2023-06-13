@@ -18,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping()
+    @GetMapping
     public String getUsers(Model model) {
         model.addAttribute("users", userService.getUsers());
         return "users";
